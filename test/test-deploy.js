@@ -19,4 +19,11 @@ describe("SimpleStorage tests", function () {
     const updatedValue = await simpleStorage.retrieve();
     assert.equal(updatedValue.toString(), "5");
   });
+  it("Test 3 - Should add a person to array people", async function () {
+    const personAdded = await simpleStorage.addPerson("Alvaro", "5");
+    await personAdded.wait(1);
+    const people = await simpleStorage.people(0);
+    assert.equal(people[0].toString(), "5");
+    assert.equal(people[1].toString(), "Alvaro");
+  });
 });
